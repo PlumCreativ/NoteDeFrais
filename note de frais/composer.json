@@ -1,0 +1,13 @@
+{
+    "require": {
+        "thecodingmachine/gotenberg-php-client": "^6.3",
+        "symfony/http-client": "^6.4",
+        "http-interop/http-factory-guzzle": "^1.2",
+        "php-http/guzzle6-adapter": "^2.0"
+    },
+    "config": {
+        "allow-plugins": {
+            "php-http/discovery": true
+        }
+    }
+}
