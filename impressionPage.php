@@ -16,9 +16,6 @@ require_once("class/bd.php");
 </head>
 <body>
 
-<aside class="pdf-content col-8">
-
-
 <?php
 
 
@@ -82,13 +79,80 @@ require_once("class/bd.php");
     } else {
         echo 'Variable not set.';
     }
+    if (isset($_SESSION['userId'])) {
+        $userId = $_SESSION['userId'];
+    } else {
+        echo 'Variable not set.';
+    }
+    if (isset($_SESSION['num_licence'])) {
+        $num_licence = $_SESSION['num_licence'];
+    } else {
+        echo 'Variable not set.';
+    }
+    if (isset($_SESSION['firstName'])) {
+        $firstName = $_SESSION['firstName'];
+    } else {
+        echo 'Variable not set.';
+    }
+    if (isset($_SESSION['Adresse1'])) {
+        $adresse_adherent = $_SESSION['Adresse1'];
+    } else {
+        echo 'Variable not set.';
+    }
+    if (isset($_SESSION['cp'])) {
+        $zip_adherent = $_SESSION['cp'];
+    } else {
+        echo 'Variable not set.';
+    }
+    if (isset($_SESSION['ville'])) {
+        $ville = $_SESSION['ville'];
+    } else {
+        echo 'Variable not set.';
+    }
+    if (isset($_SESSION['sexe'])) {
+        $sexe = $_SESSION['sexe'];
+    } else {
+        echo 'Variable not set.';
+    }
+    if (isset($_SESSION['lastName'])) {
+        $lastName = $_SESSION['lastName'];
+    } else {
+        echo 'Variable not set.';
+    }
+    if (isset($_SESSION['DateNaissance'])) {
+        $DateNaissance = $_SESSION['DateNaissance'];
+    } else {
+        echo 'Variable not set.';
+    }
+
+    if (isset($_SESSION['num_recu'])) {
+        $num_order = $_SESSION['num_recu'];
+    } else {
+        echo 'Variable not set.';
+    }
+    if (isset($_SESSION['route'])) {
+        $adresse_demandeur = $_SESSION['route'];
+    } else {
+        echo 'Variable not set.';
+    }
+    if (isset($_SESSION['cp'])) {
+        $zip_demandeur = $_SESSION['cp'];
+    } else {
+        echo 'Variable not set.';
+    }
+    if (isset($_SESSION['city'])) {
+        $city = $_SESSION['city'];
+    } else {
+        echo 'Variable not set.';
+    }
+
 ?> 
 
 <div class="d-flex justify-content-between">
     <H4 class="fw-bold">Notes de frais des bénévoles</H4>
 
     <div class="dominant-color d-flex justify-content-end" style="padding: 0px 40px;">
-        <H4 class="">Année civile 2023</H4>
+        <H4 class="">Année civile 2024</H4>
     </div>
     
 </div>
@@ -99,7 +163,7 @@ require_once("class/bd.php");
     </div>
     
     <div class="dominant-color d-flex justify-content-center">
-        Jean-Christophe Berbier
+        <?php echo($lastName . " " . $firstName); ?>
     </div>
     
 </div>
@@ -110,7 +174,7 @@ require_once("class/bd.php");
     </div>
 
     <div class="dominant-color d-flex justify-content-center">
-        12, rue de Marron, 54600 Villers lès Nancy
+        <?php echo($adresse_adherent . " " . $zip_adherent . " " . $ville); ?>
     </div>
     
 </div>
@@ -120,7 +184,7 @@ require_once("class/bd.php");
         <div class=" fw-bold  p-2 g-col-6">certifie renoncer au remboursement des frais ci-dessous et les laisser à l'association </div>
     </div>
     <div class="dominant-color d-flex justify-content-center">
-        Salle d'Armes de Villers lès Nancy, 1 rue Rodin - 54600 Villers lès Nancy
+        <?php echo($adresse_demandeur . " " . $zip_demandeur . " " . $city); ?>
     </div>
 </div>
 
@@ -161,12 +225,12 @@ require_once("class/bd.php");
             <td class=""><?php echo($dat) ; ?></td>
             <td class=""><?php echo($libelle); ?></td>
             <td class=""><?php echo($nom); ?></td>
-            <td class=""><?php echo($km); ?></td>
-            <td class="cost"><?php echo($costtrajet); ?></td>
-            <td class=""><?php echo($costpeag); ?></td>
-            <td class=""><?php echo($costrepas); ?></td>
-            <td class=""><?php echo($costheber); ?></td>
-            <td class="cost"><?php echo($total_cost = $costheber + $costpeag + $costrepas + $costtrajet); ?></td>
+            <td class=""><?php echo($km . " km"); ?></td>
+            <td class="cost"><?php echo($costtrajet . " €"); ?></td>
+            <td class=""><?php echo($costpeag . " €"); ?></td>
+            <td class=""><?php echo($costrepas . " €"); ?></td>
+            <td class=""><?php echo($costheber . " €"); ?></td>
+            <td class="cost"><?php echo($total_cost = $costheber + $costpeag + $costrepas + $costtrajet . " €"); ?></td>
         </tr>
     </tbody>
 
@@ -189,7 +253,8 @@ require_once("class/bd.php");
         <div class=" fw-bold  p-2 g-col-6">certifie renoncer au remboursement des frais ci-dessous et les laisser à l'association </div>
     </div>
     <div class="dominant-color d-flex justify-content-center">
-        Théo Berbier, licence n° 170540010338 
+        <?php echo($userId . ", licence n°" . $num_licence); ?>
+        
     </div>
     
 </div>
@@ -201,7 +266,7 @@ require_once("class/bd.php");
         <div class="p-2">Montant total des dons </div>
     </div>
     <div class=" cost-info gap-3">
-        <div class=" cost p-2 col-12"><?php echo($_SESSION['costtrajet']); ?></div>
+        <div class=" cost p-2 col-12"><?php echo($costtrajet . " €"); ?></div>
     </div>
 </div>
 
@@ -247,7 +312,7 @@ require_once("class/bd.php");
     <tbody>
         <tr>
             <th>N° d'ordre du Reçu :</th>
-            <td>2009-014</td>
+            <td><?php echo($num_order); ?></td>
         </tr>
         <tr>
             <th>Remis le :</th>
@@ -260,18 +325,6 @@ require_once("class/bd.php");
     </tbody>
 </table>
 
-</aside>
-
-
-<aside class="container-fluid mb-5">
-    <div class="d-flex justify-content-evenly">
-        <div class="d-grid col-2">
-            <a class="btn btn-outline-secondary btn-create p-2 " href="genpdf.php">Imprimé le pdf</a>
-        </div>
-
-
-    </div>
-</aside>
 
 </body>
 

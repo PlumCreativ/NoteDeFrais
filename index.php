@@ -26,6 +26,8 @@ require_once("class/bd.php");?>
                     $isConnect = false;
                     $errorMessage = '';
                     if( isset( $_SESSION['userId'] ) ) {
+
+                        
                         $isConnect = true;     
 
                         if( $isConnect ) {
@@ -40,7 +42,22 @@ require_once("class/bd.php");?>
                                     </div>
                                 </div>
                             </aside>
-                            
+                            <?php if(isset($_SESSION['num_licence']) || isset($_SESSION['num_recu'])){?>
+                                <br><br><br>
+                                <aside class="container-fluid">
+                                    <div class="d-flex justify-content-evenly">
+                                        <div class="d-grid col-2">
+                                            <a class="btn btn-outline-secondary btn-create p-2 " href="impressionPage.php">Voir la <b>Note de Frais</b></a>
+                                        </div>
+                                        <div class="d-grid col-2">
+                                            <a class="btn btn-outline-secondary btn-create p-2 " href="genpdf.php">Imprimer le <b> Note de Frais</b></a>
+                                        </div>
+                                    </div>
+                                </aside>
+                            <?php
+                            }
+                            ?>
+
                         <?php
                         }
                     }else {
@@ -62,7 +79,6 @@ require_once("class/bd.php");?>
 
                     <?php 
                     }
-                    session_destroy();
                     ?>
             </div>
         </header>
