@@ -21,33 +21,33 @@ $costheber = htmlspecialchars( $_POST['costheber'] );
 $costtrajet = htmlspecialchars($_POST['costtrajet']);
 $libelle = htmlspecialchars( $_POST['libelle'] );
 
-if ($ligue < 30) {
-    // License number not found in the database
+settype($ligue, "int");
+if (strlen($ligue)  > 250) {
     header('Location: formular.php?invalidligue=1');
     exit();
 }
 
-if ($nom > 30) {
+if ($nom > 50) {
     header( 'Location: formular.php?invalidnom=1' );
     exit();
 }
 
-if ($sigle > 30) {
+if ($sigle > 50) {
     header( 'Location: formular.php?invalidsigle=1' );
     exit();
 }
 
-if ($president > 30) {
+if ($president > 50) {
     header( 'Location: formular.php?invalidpresident=1' );
     exit();
 }
 
-if ($libelle > 30) {
+if ($libelle > 50) {
     header( 'Location: formular.php?invalidlibelle=1' );
     exit();
 }
 
-if ($trajet > 30) {
+if ($trajet > 50) {
     header( 'Location: formular.php?invalidtrajet=1' );
     exit();
 }
@@ -58,25 +58,25 @@ if( !is_numeric($km) || $km > 30000 ) {
     exit();
 } 
 settype($costpeag, "int");
-if( !is_numeric($costpeag) || $costpeag > 100 ) {
+if( !is_numeric($costpeag) || $costpeag > 1000 ) {
 
     header( 'Location: formular.php?invalidcostpeag=1' );
     exit();
 } 
 settype($costrepas, "int");
-if( !is_numeric($costrepas) || $costrepas > 100 ) {
+if( !is_numeric($costrepas) || $costrepas > 1000 ) {
 
     header( 'Location: formular.php?invalidcostreapas=1' );
     exit();
 } 
 settype($costheber, "int");
-if( !is_numeric($costheber) || $costheber > 100 ) {
+if( !is_numeric($costheber) || $costheber > 1000 ) {
 
     header( 'Location: formular.php?invalidcostheber=1' );
     exit();
 } 
 settype($costtrajet, "int");
-if( !is_numeric($costtrajet) || $costtrajet > 100 ) {
+if( !is_numeric($costtrajet) || $costtrajet > 1000 ) {
 
     header( 'Location: formular.php?invalidcosttrager=1' );
     exit();
@@ -119,7 +119,7 @@ $isInsertOk_motifs = $req_motifs->execute([
 
 // get licence number
 $req_demandeur = $db->query( 
-    "SELECT * FROM demandeur WHERE identifiant='$userId'"
+    "SELECT * FROM `demandeur` WHERE identifiant='$userId'"
 );
 
 // Fetch the result as an associative array
@@ -128,9 +128,9 @@ $result = $req_demandeur->fetch(PDO::FETCH_ASSOC);
 // Now you can access each attribute from the $result array
 $num_licence = $result["num_licence"];
 $num_order = $result["num_recu"];
-$adresse_demandeur = $result["route"];
-$zip_demandeur = $result["cp"];
-$city = $result["city"];
+$adresse_demandeur = $result["adresse"];
+$zip_demandeur = $result["code_postale"];
+$city = $result["ville"];
 
 // Adherent data-base
 // Prepare the query to fetch all attributes of the adherent

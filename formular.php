@@ -66,6 +66,8 @@ require_once("class/bd.php");?>
         ?>
 
         <div class=" row justify-content-center">
+
+
             <aside class="container-fluid col-4">
 
                 <div class="row justify-content-center gap-3">
@@ -99,7 +101,7 @@ require_once("class/bd.php");?>
 
                                 
                                 <div class="mb-4">
-                                    <input type="text" class="form-control border rounded p-2"
+                                    <input type="number" class="form-control border rounded p-2"
                                     id="ligue" placeholder="Numéro de la ligue (€)" name="ligue" required>
                                 </div>
 

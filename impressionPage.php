@@ -4,8 +4,6 @@ session_start();
 require_once("class/bd.php");
 ?>
 
-
-
 <html>
 <head>
     <meta charset="UTF-8">
@@ -17,7 +15,6 @@ require_once("class/bd.php");
 <body>
 
 <?php
-
 
     if (isset($_SESSION['ligue'])) {
         $ligue = $_SESSION['ligue'];
@@ -79,13 +76,8 @@ require_once("class/bd.php");
     } else {
         echo 'Variable not set.';
     }
-    if (isset($_SESSION['userId'])) {
-        $userId = $_SESSION['userId'];
-    } else {
-        echo 'Variable not set.';
-    }
-    if (isset($_SESSION['num_licence'])) {
-        $num_licence = $_SESSION['num_licence'];
+    if (isset($_SESSION['lastName'])) {
+        $lastName = $_SESSION['lastName'];
     } else {
         echo 'Variable not set.';
     }
@@ -94,13 +86,13 @@ require_once("class/bd.php");
     } else {
         echo 'Variable not set.';
     }
-    if (isset($_SESSION['Adresse1'])) {
-        $adresse_adherent = $_SESSION['Adresse1'];
+    if (isset($_SESSION['DateNaissance'])) {
+        $DateNaissance = $_SESSION['DateNaissance'];
     } else {
         echo 'Variable not set.';
     }
-    if (isset($_SESSION['cp'])) {
-        $zip_adherent = $_SESSION['cp'];
+    if (isset($_SESSION['sexe'])) {
+        $libelle = $_SESSION['sexe'];
     } else {
         echo 'Variable not set.';
     }
@@ -109,39 +101,43 @@ require_once("class/bd.php");
     } else {
         echo 'Variable not set.';
     }
-    if (isset($_SESSION['sexe'])) {
-        $sexe = $_SESSION['sexe'];
+    if (isset($_SESSION['cp'])) {
+        $cp = $_SESSION['cp'];
     } else {
         echo 'Variable not set.';
     }
-    if (isset($_SESSION['lastName'])) {
-        $lastName = $_SESSION['lastName'];
+    if (isset($_SESSION['num_licence'])) {
+        $num_licence = $_SESSION['num_licence'];
     } else {
         echo 'Variable not set.';
     }
-    if (isset($_SESSION['DateNaissance'])) {
-        $DateNaissance = $_SESSION['DateNaissance'];
+    if (isset($_SESSION['Adresse1'])) {
+        $adresse_adherent = $_SESSION['Adresse1'];
     } else {
         echo 'Variable not set.';
     }
-
     if (isset($_SESSION['num_recu'])) {
         $num_order = $_SESSION['num_recu'];
     } else {
         echo 'Variable not set.';
     }
     if (isset($_SESSION['route'])) {
-        $adresse_demandeur = $_SESSION['route'];
+        $route = $_SESSION['route'];
     } else {
         echo 'Variable not set.';
     }
     if (isset($_SESSION['cp'])) {
-        $zip_demandeur = $_SESSION['cp'];
+        $zip_adherent = $_SESSION['cp'];
     } else {
         echo 'Variable not set.';
     }
     if (isset($_SESSION['city'])) {
         $city = $_SESSION['city'];
+    } else {
+        echo 'Variable not set.';
+    }
+    if (isset($_SESSION['userId'])) {
+        $userId = $_SESSION['userId'];
     } else {
         echo 'Variable not set.';
     }
