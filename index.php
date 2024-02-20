@@ -17,6 +17,7 @@ require_once("class/bd.php");?>
         <header>
 
 
+
                     <?php
                         $errorMessage = '';
                         if( isset( $_SESSION['userId'] ) ) {
@@ -33,15 +34,33 @@ require_once("class/bd.php");?>
                                         </div>
 
                                     
-                                        <aside class="container-fluid">
-                                            <div class="d-flex justify-content-evenly">
+                                    <aside class="container-fluid">
+                                        <nav class="navbar">
+                                            <ul class="nav justify-content-center">
+                                                <li>
+                                                    <div class="d-grid col-2">
+                                                        <a class="btn btn-outline-secondary btn-create p-2 " href="formular.php">Faire une Note de Frais</a>
+                                                    </div>
+                                                </li>
+                                                <li>
+                                                    <div class="d-grid col-2">
+                                                        <a class="btn btn-outline-secondary btn-create p-2 " href="logout.php">Se déconnecter</a>
+                                                    </div>
+                                                </li>
+                                                <li></li>
+                                            </ul>
+                                        </nav>
+
+                                            <!-- Previous style "Functional"-->
+                                            <!-- <div class="d-flex justify-content-evenly">
                                                 <div class="d-grid col-2">
                                                     <a class="btn btn-outline-secondary btn-create p-2 " href="formular.php">Faire une Note de Frais</a>
                                                 </div>
                                                 <div class="d-grid col-2">
                                                     <a class="btn btn-outline-secondary btn-create p-2 " href="logout.php">Se déconnecter</a>
                                                 </div>
-                                            </div>
+                                            </div> -->
+
                                     </aside>
                                 
                                 </div>
