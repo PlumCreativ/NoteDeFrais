@@ -79,7 +79,7 @@ $passHash = sodium_crypto_pwhash_str(
 );
 
 $req = $db->prepare( 
-    "INSERT INTO demandeur( identifiant, password, mail, num_recu, num_licence, route, cp, city)
+    "INSERT INTO demandeur( identifiant, password, mail, num_recu, num_licence, adresse, code_postale, ville)
      VALUES( :userId, :password, :mail, :recu, :licence, :adresse, :code_postale, :ville)"
 );
 
