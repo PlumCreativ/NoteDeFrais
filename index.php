@@ -16,75 +16,124 @@ require_once("class/bd.php");?>
     <body>
         <header>
 
-
-
                     <?php
                         $errorMessage = '';
                         if( isset( $_SESSION['userId'] ) ) {
                     ?>
 
-                                <aside>
 
+                        <aside>
+                                
+
+                            <?php if(isset($_SESSION['num_licence']) || isset($_SESSION['num_recu'])){?>
+                                
+                                <nav>
+
+                                    <ul>
+                                        
+                                    </ul>
+                        
+                                    <ul>
+                                        <li class="nav-button">
+                                            <a class="btn btn-outline-secondary btn-create px-5" href="formular.php">Faire une <b>Note de Frais</b></a>
+                                        </li>
+                                        <li class="nav-button">
+                                            <a class="btn btn-outline-secondary btn-create px-5" href="impressionPage.php">Voir la <b>Note de Frais</b></a>
+                                        </li>                
+
+                                        <li class="nav-button">
+                                            <a class="btn btn-outline-secondary btn-create p-2 " href="genpdf.php">Imprimer le <b> Note de Frais</b></a>
+                                        </li>
+                                                                                    
+                                    </ul>
+
+                                    <ul class="secondary">
+                                        <li class="nav-button">
+                                            <a class="btn btn-outline-secondary btn-create px-5" href="logout.php">Se déconnecter</a>
+                                        </li>                                                    
+                                    </ul>                                                 
+
+                                </nav>
+
+                                <div class="container-fluid w-100 h-25">
+                                    <div class="row justify-content-center mb-5">
+                                        <div class=" text-center">
+                                            <H1>Notes de Frais</H1>
+                                        </div>
+                                    </div>
+                                </div>
+                            <?php
+                            } 
+                            else{?>          
+                                        
+                                    <nav>
+                                        <ul>
+                                            <li class="nav-button">
+                                                <a class="btn btn-outline-secondary btn-create px-5" href="formular.php">Faire une <b>Note de Frais</b></a>
+                                            </li>
+
+
+                                                                                                
+                                        </ul>
+
+                                        <ul class="secondary">
+                                            <li class="nav-button">
+                                                <a class="btn btn-outline-secondary btn-create px-5" href="logout.php">Se déconnecter</a>
+                                            </li>                                                    
+                                        </ul>                                                 
+
+                                    </nav>
 
                                     <div class="container-fluid w-100 h-25">
                                         <div class="row justify-content-center mb-5">
-                                            <div class="col-12 text-center">
+                                            <div class=" text-center">
                                                 <H1>Notes de Frais</H1>
                                             </div>
                                         </div>
+                                    </div>
+                            </aside>
 
-                                    
-                                    <aside class="container-fluid">
-                                        <nav class="navbar">
-                                            <ul class="nav justify-content-center">
-                                                <li>
-                                                    <div class="d-grid col-2">
-                                                        <a class="btn btn-outline-secondary btn-create p-2 " href="formular.php">Faire une Note de Frais</a>
-                                                    </div>
-                                                </li>
-                                                <li>
-                                                    <div class="d-grid col-2">
-                                                        <a class="btn btn-outline-secondary btn-create p-2 " href="logout.php">Se déconnecter</a>
-                                                    </div>
-                                                </li>
-                                                <li></li>
-                                            </ul>
-                                        </nav>
 
-                                            <!-- Previous style "Functional"-->
-                                            <!-- <div class="d-flex justify-content-evenly">
-                                                <div class="d-grid col-2">
-                                                    <a class="btn btn-outline-secondary btn-create p-2 " href="formular.php">Faire une Note de Frais</a>
-                                                </div>
-                                                <div class="d-grid col-2">
-                                                    <a class="btn btn-outline-secondary btn-create p-2 " href="logout.php">Se déconnecter</a>
-                                                </div>
-                                            </div> -->
 
-                                    </aside>
-                                
-                                </div>
-                                <?php if(isset($_SESSION['num_licence']) || isset($_SESSION['num_recu'])){?>
 
-                                    <br><br><br>
-                                    <aside class="container-fluid">
-                                        <div class="d-flex justify-content-evenly">
-                                            <div class="d-grid col-2">
-                                                <a class="btn btn-outline-secondary btn-create p-2 " href="impressionPage.php">Voir la <b>Note de Frais</b></a>
-                                            </div>
-                                            <div class="d-grid col-2">
-                                                <a class="btn btn-outline-secondary btn-create p-2 " href="genpdf.php">Imprimer le <b> Note de Frais</b></a>
-                                            </div>
-                                        </div>
-                                    </aside>
-
+                                <!-- Previous style "Functional"-->
+                                <!-- <div class="d-flex justify-content-evenly">
+                                    <div class="d-grid col-2">
+                                        <a class="btn btn-outline-secondary btn-create p-2 " href="formular.php">Faire une Note de Frais</a>
+                                    </div>
+                                    <div class="d-grid col-2">
+                                        <a class="btn btn-outline-secondary btn-create p-2 " href="logout.php">Se déconnecter</a>
+                                    </div>
+                                </div> -->
+                            
                                 <?php
-                                }
-                        }else {
-                        ?>              
+                            }
+                            ?>  
 
-                                <aside class="container-fluid">
-                                    <div class="d-flex justify-content-evenly">
+
+                        <?php
+                    }else {
+                    ?>              
+                                    
+                        <aside class="container-fluid">
+
+                            <nav>
+
+                                <ul>
+                                    <li class="nav-button">
+                                        <a class="btn btn-outline-secondary btn-create px-5" href="login.php">Log in</a>
+                                    </li>
+                                    <li class="nav-button">
+                                        <a class="btn btn-outline-secondary btn-create px-5" href="singin.php">Sign in</a>
+                                    </li>                                                      
+                                </ul>                                                
+
+                            </nav>
+
+                        </aside>
+        
+
+                                    <!-- <div class="d-flex justify-content-evenly">
                                         <div class="d-grid col-2">
                                             <a class="btn btn-outline-secondary btn-create p-2 " href="login.php">Log in</a>
                                         </div>
@@ -94,14 +143,13 @@ require_once("class/bd.php");?>
 
                                         </div>
 
-                                    </div>
-                                </aside>
-                            </aside>
+                                    </div> -->
+                                
 
 
-                        <?php 
-                        }
-                        ?>
+                    <?php 
+                    }
+                    ?>
 
         </header>
     </body>

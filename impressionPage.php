@@ -144,6 +144,37 @@ require_once("class/bd.php");
 
 ?> 
 
+<header>
+    <nav>
+         
+         <ul>
+
+            <li class="nav-button">
+                 <a class="btn btn-outline-secondary btn-create px-5" href="index.php">Menu</a>
+            </li>   
+
+            <li class="nav-button">
+                 <a class="pdf btn btn-outline-secondary btn-create px-5" id="printButton">Impression <b>Note de frais</b> </a>
+            </li>            
+                                                                 
+            <li class="nav-button">
+                 <a class="btn btn-outline-secondary btn-create px-5" href="logout.php">Déconnexion</a>
+            </li>    
+
+         </ul>                                                 
+
+     </nav>
+</header>
+
+<script>
+    const printButton = document.getElementById('printButton');
+
+    printButton.addEventListener('click', function() {
+            print();
+    });
+</script>
+
+
 <div class="d-flex justify-content-between">
     <H4 class="fw-bold">Notes de frais des bénévoles</H4>
 
