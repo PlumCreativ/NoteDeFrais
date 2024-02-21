@@ -59,6 +59,21 @@ require_once("class/bd.php");?>
     <body>
         <header class="container-fluid">
 
+
+        <nav>
+         
+            <ul>
+                <li class="nav-button">
+                    <a class="btn btn-outline-secondary btn-create px-5" href="index.php">Menu</a>
+                </li>            
+                                                                    
+                <li class="nav-button">
+                    <a class="btn btn-outline-secondary btn-create px-5" href="logout.php">Déconnexion</a>
+                </li>                                                    
+            </ul>                                                 
+
+        </nav>
+
         <?php
         if( !empty( $errorMessage ) ) {
             echo '<p class="col-9 ml-4 col alert alert-danger">' . $errorMessage .'</p>';
@@ -66,6 +81,8 @@ require_once("class/bd.php");?>
         ?>
 
         <div class=" row justify-content-center">
+
+
             <aside class="container-fluid col-4">
 
                 <div class="row justify-content-center gap-3">
@@ -99,7 +116,7 @@ require_once("class/bd.php");?>
 
                                 
                                 <div class="mb-4">
-                                    <input type="text" class="form-control border rounded p-2"
+                                    <input type="number" class="form-control border rounded p-2"
                                     id="ligue" placeholder="Numéro de la ligue (€)" name="ligue" required>
                                 </div>
 

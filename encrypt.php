@@ -1,6 +1,9 @@
 <?php
 require_once("class/bd.php");
 
+
+session_start();
+
 // Vérifier si le nom existe déjà
 $userId = htmlspecialchars( $_POST['userId'] );
 $mail = htmlspecialchars( $_POST['mail'] );
@@ -37,8 +40,9 @@ $checkLicence = $db->prepare('SELECT num_licence FROM adherent WHERE num_licence
 $checkLicence->execute([':licence'=>$licence]);
 $result = $checkLicence->fetch(PDO::FETCH_ASSOC);
 
-if (!$result) {
-    // License number not found in the database
+
+if (!$result['num_licence']) {
+    // License number not found in database
     header('Location: singin.php?invalidlicence=1');
     exit();
 }

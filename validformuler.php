@@ -1,5 +1,12 @@
 <?php
+session_start();
 require_once("class/bd.php");
+
+if (isset($_SESSION['userId'])) {
+    $userId = $_SESSION['userId'];
+} else {
+    echo 'Variable not set.';
+}
 
 $ligue = htmlspecialchars( $_POST['ligue'] );
 $nom = htmlspecialchars( $_POST['nom'] );
@@ -14,33 +21,33 @@ $costheber = htmlspecialchars( $_POST['costheber'] );
 $costtrajet = htmlspecialchars($_POST['costtrajet']);
 $libelle = htmlspecialchars( $_POST['libelle'] );
 
-if ($ligue < 30) {
-    // License number not found in the database
+settype($ligue, "int");
+if (strlen($ligue)  > 250) {
     header('Location: formular.php?invalidligue=1');
     exit();
 }
 
-if ($nom > 30) {
+if ($nom > 50) {
     header( 'Location: formular.php?invalidnom=1' );
     exit();
 }
 
-if ($sigle > 30) {
+if ($sigle > 50) {
     header( 'Location: formular.php?invalidsigle=1' );
     exit();
 }
 
-if ($president > 30) {
+if ($president > 50) {
     header( 'Location: formular.php?invalidpresident=1' );
     exit();
 }
 
-if ($libelle > 30) {
+if ($libelle > 50) {
     header( 'Location: formular.php?invalidlibelle=1' );
     exit();
 }
 
-if ($trajet > 30) {
+if ($trajet > 50) {
     header( 'Location: formular.php?invalidtrajet=1' );
     exit();
 }
@@ -51,25 +58,25 @@ if( !is_numeric($km) || $km > 30000 ) {
     exit();
 } 
 settype($costpeag, "int");
-if( !is_numeric($costpeag) || $costpeag > 100 ) {
+if( !is_numeric($costpeag) || $costpeag > 1000 ) {
 
     header( 'Location: formular.php?invalidcostpeag=1' );
     exit();
 } 
 settype($costrepas, "int");
-if( !is_numeric($costrepas) || $costrepas > 100 ) {
+if( !is_numeric($costrepas) || $costrepas > 1000 ) {
 
     header( 'Location: formular.php?invalidcostreapas=1' );
     exit();
 } 
 settype($costheber, "int");
-if( !is_numeric($costheber) || $costheber > 100 ) {
+if( !is_numeric($costheber) || $costheber > 1000 ) {
 
     header( 'Location: formular.php?invalidcostheber=1' );
     exit();
 } 
 settype($costtrajet, "int");
-if( !is_numeric($costtrajet) || $costtrajet > 100 ) {
+if( !is_numeric($costtrajet) || $costtrajet > 1000 ) {
 
     header( 'Location: formular.php?invalidcosttrager=1' );
     exit();
@@ -81,10 +88,10 @@ $req_ligues = $db->prepare(
 );
 
 $isInsertOk_ligues = $req_ligues->execute([
-    ':ligue'   => $ligue,
-    ':nom'     => $nom,
-    ':sigle'  => $sigle,
-    ':president' => $president
+    ':ligue'        => $ligue,
+    ':nom'          => $nom,
+    ':sigle'        => $sigle,
+    ':president'    => $president
 ]);
 
 $req_ligues_frais = $db->prepare( 
@@ -110,30 +117,73 @@ $isInsertOk_motifs = $req_motifs->execute([
     ':libelle'   => $libelle
 ]);
 
-$req_adherent = $db->prepare(
-    "SELECT * FROM adherent WHERE num_licence = ?"
+// get licence number
+$req_demandeur = $db->query( 
+    "SELECT * FROM `demandeur` WHERE identifiant='$userId'"
 );
 
-$adherent[] = $req_adherent->execute();
+// Fetch the result as an associative array
+$result = $req_demandeur->fetch(PDO::FETCH_ASSOC);
+
+// Now you can access each attribute from the $result array
+$num_licence = $result["num_licence"];
+$num_order = $result["num_recu"];
+$adresse_demandeur = $result["adresse"];
+$zip_demandeur = $result["code_postale"];
+$city = $result["ville"];
+
+// Adherent data-base
+// Prepare the query to fetch all attributes of the adherent
+$req_adherent = $db->query(
+    "SELECT * FROM `adherent` WHERE num_licence='$num_licence'"
+);
+
+
+// Fetch the result as an associative array
+$result = $req_adherent->fetch(PDO::FETCH_ASSOC);
+
+// Now you can access each attribute from the $result array
+$adresse_adherent = $result['Adresse1'];
+$zip_adherent = $result['cp'];
+$ville = $result['ville'];
+$sexe = $result['sexe'];
+$DateNaissance = $result['DateNaissance'];
+$lastName = $result['nom'];
+$firstName = $result['prenom'];
 
 if( !$isInsertOk_ligues && !$isInsertOk_motifs && !$isInsertOk_ligues_frais) {
     echo "Erreur lors de l'enregistrement";
     var_dump($isInsertOk_ligues);
     die;
 } else {
-    session_start();
-    $_SESSION['ligue']       = $ligue;
-    $_SESSION['nom']         = $nom;
-    $_SESSION['sigle']       = $sigle;
-    $_SESSION['president']   = $president;
-    $_SESSION['dat']         = $dat;
-    $_SESSION['trajet']      = $trajet;
-    $_SESSION['km']          = $km;
-    $_SESSION['costpeag']    = $costpeag;
-    $_SESSION['costrepas']   = $costrepas;
-    $_SESSION['costheber']   = $costheber;
-    $_SESSION['libelle']     = $libelle;
-    $_SESSION['costtrajet']  = $costtrajet;
+    //DB Formuler
+    $_SESSION['ligue']              = $ligue;
+    $_SESSION['nom']                = $nom;
+    $_SESSION['sigle']              = $sigle;
+    $_SESSION['president']          = $president;
+    $_SESSION['dat']                = $dat;
+    $_SESSION['trajet']             = $trajet;
+    $_SESSION['km']                 = $km;
+    $_SESSION['costpeag']           = $costpeag;
+    $_SESSION['costrepas']          = $costrepas;
+    $_SESSION['costheber']          = $costheber;
+    $_SESSION['libelle']            = $libelle;
+    $_SESSION['costtrajet']         = $costtrajet;
+    //DB Adherent
+    $_SESSION['Adresse1']           = $adresse_adherent;
+    $_SESSION['num_licence']        = $num_licence;
+    $_SESSION['cp']                 = $zip_adherent;
+    $_SESSION['ville']              = $ville;
+    $_SESSION['sexe']               = $sexe;
+    $_SESSION['lastName']           = $lastName;
+    $_SESSION['firstName']          = $firstName;
+    $_SESSION['DateNaissance']      = $DateNaissance;
+    //DB Demandeur
+    $_SESSION['num_recu']           = $num_order;
+    $_SESSION['route']              = $adresse_demandeur;
+    $_SESSION['cp']                 = $zip_demandeur;
+    $_SESSION['city']               = $city;
+
     var_dump($_SESSION);
-    header("Location: impressionPage.php");
+    header("Location: index.php");
 }
