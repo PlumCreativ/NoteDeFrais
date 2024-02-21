@@ -179,7 +179,7 @@ nav ul li a {
 } */
 
 @media print{
-    .pdf { 
-        visibility: visible; 
+    nav { 
+        display: none;
     } 
 }

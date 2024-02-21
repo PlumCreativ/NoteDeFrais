@@ -171,6 +171,7 @@ require_once("class/bd.php");
 
     printButton.addEventListener('click', function() {
             print();
+            
     });
 </script>
 
