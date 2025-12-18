@@ -959,7 +959,7 @@ Vous pouvez l'utiliser, le modifier et le distribuer librement à titre éducati
 
 Pour toute question ou problème :
 
-- 📧 **Email** : contact@plumcreativ.com
+- 📧 **Email** : denys.lyulchak@mediaschool.me
 - 🐛 **Issues GitHub** : [NoteDeFrais/issues](https://github.com/PlumCreativ/NoteDeFrais/issues)
 - 💬 **Discussions** : [NoteDeFrais/discussions](https://github.com/PlumCreativ/NoteDeFrais/discussions)
 - 🌐 **Website** : [plumcreativ.com](https://plumcreativ.com)
