@@ -94,22 +94,35 @@ Cette organisation facilite la maintenance et l’évolution de l’application.
 NoteDeFrais/
 │
 ├── asset/ # Fichiers CSS et JS
+
 ├── class/ # Classes PHP (logique métier)
+
 ├── db/ # Scripts et configuration base de données
+
 ├── docs/ # Documentation du projet
+
 ├── images/ # Ressources graphiques
+
 ├── pdf/
 │ └── dompdf/ # Librairie dompdf
 ├── test/ # Tests
 │
 ├── index.php # Page d’accueil
+
 ├── login.php # Connexion utilisateur
+
 ├── singin.php # Inscription utilisateur
+
 ├── logout.php # Déconnexion
+
 ├── menu.php # Menu principal
+
 ├── validlogin.php # Traitement de la connexion
+
 ├── validformuler.php # Validation des formulaires
+
 ├── encrypt.php # Fonctions de chiffrement
+
 └── README.md # Documentation
 
 
