@@ -131,6 +131,7 @@ NoteDeFrais/
 1. Cloner le dépôt :
 ```bash
 git clone https://github.com/PlumCreativ/NoteDeFrais.git
+```
 
 🔐 Sécurité et bonnes pratiques
 
