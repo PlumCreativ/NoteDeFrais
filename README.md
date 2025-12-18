@@ -1,54 +1,82 @@
 # 🧾 NoteDeFrais  
-**PHP Web Application – Expense Report Management**
+**Projet BTS SIO – Option SLAM**
 
 ---
 
-## 📌 Overview
+## 📌 Sommaire
 
-**NoteDeFrais** is a PHP web application designed to manage professional expense reports.  
-It allows authenticated users to submit expense data, securely process forms, and generate **PDF summaries** using a dedicated library.
+- [Contexte et objectifs](#-contexte-et-objectifs)
+- [Présentation générale](#-présentation-générale)
+- [Fonctionnalités réalisées](#-fonctionnalités-réalisées)
+- [Technologies et outils](#-technologies-et-outils)
+- [Organisation du projet](#-organisation-du-projet)
+---
 
-This project demonstrates solid backend fundamentals, clean project structuring, and practical use of external dependencies in a real-world use case.
+## 🎯 Contexte et objectifs
+
+Ce projet a été réalisé dans le cadre du **BTS SIO – option SLAM**.  
+Il a pour objectif de mettre en pratique les compétences suivantes :
+
+- développement d’une application web dynamique
+- gestion des formulaires et des données
+- sécurisation des accès
+- structuration d’un projet PHP
+- génération de documents PDF
+
+L’application répond à un besoin courant en entreprise : **la gestion des notes de frais**.
 
 ---
 
-## ✨ Key Features
+## 📖 Présentation générale
 
-- 🔐 User authentication (signup, login, logout)
-- 🧾 Expense report submission via validated forms
-- 📄 PDF generation using **dompdf**
-- 🗂️ Modular PHP architecture
-- 🔑 Data encryption utilities
-- 🧪 Dedicated test directory
-- 📦 Clean and extensible project structure
+**NoteDeFrais** est une application web développée en PHP permettant à un utilisateur de :
 
----
+- créer un compte
+- se connecter de manière sécurisée
+- saisir des notes de frais
+- consulter ses informations
+- générer un **document PDF récapitulatif**
 
-## 🛠️ Tech Stack
-
-| Category | Technology |
-|-------|-----------|
-| Backend | PHP 7.4+ |
-| Frontend | HTML5, CSS3 |
-| Database | MySQL |
-| PDF Engine | dompdf |
-| Server | Apache / Nginx |
-| Tooling | Git, GitHub |
+Le projet repose sur une architecture simple, lisible et maintenable, adaptée à un contexte pédagogique.
 
 ---
 
-## 🏗️ Project Architecture
+## ✨ Fonctionnalités réalisées
 
-The project is structured to clearly separate concerns such as:
-- static assets
-- business logic
-- database configuration
-- request validation
-- PDF generation
-
-This layout improves maintainability and scalability while remaining accessible for rapid development.
+- 🔐 Authentification utilisateur
+  - inscription
+  - connexion
+  - déconnexion
+- 🧾 Gestion des notes de frais via formulaires
+- 📄 Génération de PDF avec la librairie **dompdf**
+- ✅ Validation des données côté serveur
+- 🗂️ Organisation du code par dossiers
+- 🔑 Chiffrement des informations sensibles
 
 ---
 
-## 🗂️ Project Structure
+## 🧰 Technologies et outils
+
+| Élément | Technologie |
+|-------|------------|
+| Langage | PHP |
+| Frontend | HTML / CSS |
+| Base de données | MySQL |
+| Serveur | Apache |
+| Librairie externe | dompdf |
+| IDE | VS Code |
+| Versioning | Git / GitHub |
+
+---
+
+## 🏗️ Organisation du projet
+
+Le projet est structuré de manière logique afin de séparer :
+
+- les ressources statiques
+- la logique métier
+- la gestion des données
+- les pages de traitement
+
+Cette organisation facilite la maintenance et l’évolution de l’application.
 
