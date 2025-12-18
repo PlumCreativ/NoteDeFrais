@@ -1,147 +1,54 @@
 # 🧾 NoteDeFrais  
-**Projet BTS SIO – Option SLAM**
+**PHP Web Application – Expense Report Management**
 
 ---
 
-## 📌 Sommaire
+## 📌 Overview
 
-- [Contexte et objectifs](#-contexte-et-objectifs)
-- [Présentation générale](#-présentation-générale)
-- [Fonctionnalités réalisées](#-fonctionnalités-réalisées)
-- [Technologies et outils](#-technologies-et-outils)
-- [Organisation du projet](#-organisation-du-projet)
-- [Arborescence](#-arborescence)
-- [Installation et mise en œuvre](#-installation-et-mise-en-œuvre)
-- [Sécurité et bonnes pratiques](#-sécurité-et-bonnes-pratiques)
-- [Tests](#-tests)
-- [Compétences BTS SIO mobilisées](#-compétences-bts-sio-mobilisées)
-- [Améliorations possibles](#-améliorations-possibles)
+**NoteDeFrais** is a PHP web application designed to manage professional expense reports.  
+It allows authenticated users to submit expense data, securely process forms, and generate **PDF summaries** using a dedicated library.
+
+This project demonstrates solid backend fundamentals, clean project structuring, and practical use of external dependencies in a real-world use case.
 
 ---
 
-## 🎯 Contexte et objectifs
+## ✨ Key Features
 
-Ce projet a été réalisé dans le cadre du **BTS SIO – option SLAM**.  
-Il a pour objectif de mettre en pratique les compétences suivantes :
-
-- développement d’une application web dynamique
-- gestion des formulaires et des données
-- sécurisation des accès
-- structuration d’un projet PHP
-- génération de documents PDF
-
-L’application répond à un besoin courant en entreprise : **la gestion des notes de frais**.
+- 🔐 User authentication (signup, login, logout)
+- 🧾 Expense report submission via validated forms
+- 📄 PDF generation using **dompdf**
+- 🗂️ Modular PHP architecture
+- 🔑 Data encryption utilities
+- 🧪 Dedicated test directory
+- 📦 Clean and extensible project structure
 
 ---
 
-## 📖 Présentation générale
+## 🛠️ Tech Stack
 
-**NoteDeFrais** est une application web développée en PHP permettant à un utilisateur de :
-
-- créer un compte
-- se connecter de manière sécurisée
-- saisir des notes de frais
-- consulter ses informations
-- générer un **document PDF récapitulatif**
-
-Le projet repose sur une architecture simple, lisible et maintenable, adaptée à un contexte pédagogique.
-
----
-
-## ✨ Fonctionnalités réalisées
-
-- 🔐 Authentification utilisateur
-  - inscription
-  - connexion
-  - déconnexion
-- 🧾 Gestion des notes de frais via formulaires
-- 📄 Génération de PDF avec la librairie **dompdf**
-- ✅ Validation des données côté serveur
-- 🗂️ Organisation du code par dossiers
-- 🔑 Chiffrement des informations sensibles
+| Category | Technology |
+|-------|-----------|
+| Backend | PHP 7.4+ |
+| Frontend | HTML5, CSS3 |
+| Database | MySQL |
+| PDF Engine | dompdf |
+| Server | Apache / Nginx |
+| Tooling | Git, GitHub |
 
 ---
 
-## 🧰 Technologies et outils
+## 🏗️ Project Architecture
 
-| Élément | Technologie |
-|-------|------------|
-| Langage | PHP |
-| Frontend | HTML / CSS |
-| Base de données | MySQL |
-| Serveur | Apache |
-| Librairie externe | dompdf |
-| IDE | VS Code |
-| Versioning | Git / GitHub |
+The project is structured to clearly separate concerns such as:
+- static assets
+- business logic
+- database configuration
+- request validation
+- PDF generation
 
----
-
-## 🏗️ Organisation du projet
-
-Le projet est structuré de manière logique afin de séparer :
-
-- les ressources statiques
-- la logique métier
-- la gestion des données
-- les pages de traitement
-
-Cette organisation facilite la maintenance et l’évolution de l’application.
+This layout improves maintainability and scalability while remaining accessible for rapid development.
 
 ---
 
-## 🗂️ Arborescence
+## 🗂️ Project Structure
 
-NoteDeFrais/
-│
-├── asset/ # Fichiers CSS et JS
-
-├── class/ # Classes PHP (logique métier)
-
-├── db/ # Scripts et configuration base de données
-
-├── docs/ # Documentation du projet
-
-├── images/ # Ressources graphiques
-
-├── pdf/
-│ └── dompdf/ # Librairie dompdf
-├── test/ # Tests
-│
-├── index.php # Page d’accueil
-
-├── login.php # Connexion utilisateur
-
-├── singin.php # Inscription utilisateur
-
-├── logout.php # Déconnexion
-
-├── menu.php # Menu principal
-
-├── validlogin.php # Traitement de la connexion
-
-├── validformuler.php # Validation des formulaires
-
-├── encrypt.php # Fonctions de chiffrement
-
-└── README.md # Documentation
-
-
----
-
-## ⚙️ Installation et mise en œuvre
-
-### Prérequis
-
-- PHP 7.4 ou supérieur
-- Serveur Apache
-- MySQL
-- Extensions PHP :
-  - mbstring
-  - gd ou imagick
-
-### Installation
-
-1. Cloner le dépôt :
-```bash
-git clone https://github.com/PlumCreativ/NoteDeFrais.git
-```
